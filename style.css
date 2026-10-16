@@ -8,7 +8,7 @@
 
 body {
     font-family: Arial, sans-serif;
-    background: linear-gradient(135deg, #141e30, #243b55);
+    background: lightblue(135deg, #141e30, #243b55);
     min-height: 100vh;
     display: flex;
     justify-content: center;
@@ -34,7 +34,7 @@ body {
 
 h1 {
     text-align: center;
-    color: #243b55;
+    color: red;
     margin-bottom: 10px;
 }
 
