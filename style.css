@@ -96,7 +96,7 @@ input {
 
 input:focus {
     border-color: #243b55;
-    box-shadow: 0 0 5px rgba(36, 59, 85, 0.3);
+    box-shadow: 0 0 5px rgba(93, 194, 199, 0.701);
 }
 
 /* Required field messages */
