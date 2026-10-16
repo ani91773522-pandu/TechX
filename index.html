@@ -1,13 +1,180 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>My Project</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Login Portal</title>
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
-    <h1>Welcome to My Project</h1>
-    <button onclick="showMessage()">Click Me</button>
 
-    <script src="script.js"></script>
+<body>
+
+    <div class="container">
+
+        <div class="form-box">
+
+            <h1>Student Portal</h1>
+            <p class="subtitle">Welcome! Please enter your details.</p>
+
+            <div class="tabs">
+                <button type="button" id="loginTab"
+                    class="tab active" onclick="showLogin()">
+                    Login
+                </button>
+
+                <button type="button" id="registerTab"
+                    class="tab" onclick="showRegister()">
+                    Register
+                </button>
+            </div>
+
+            <!-- LOGIN FORM -->
+
+            <form id="loginForm">
+
+                <div class="input-group">
+                    <label for="loginEmail">Email Address</label>
+                    <input type="email" id="loginEmail"
+                        placeholder="Enter your email" required>
+                    <small>This field is required.</small>
+                </div>
+
+                <div class="input-group">
+                    <label for="loginPassword">Password</label>
+                    <input type="password" id="loginPassword"
+                        placeholder="Enter your password" required>
+                    <small>This field is required.</small>
+                </div>
+
+                <button type="submit" class="submit-btn">
+                    Sign In
+                </button>
+
+                <p class="switch-text">
+                    Don't have an account?
+                    <a href="#" onclick="showRegister(); return false;">
+                        Sign Up
+                    </a>
+                </p>
+
+            </form>
+
+
+            <!-- REGISTRATION FORM -->
+
+            <form id="registerForm" class="hidden">
+
+                <div class="input-group">
+                    <label for="studentName">Student Name</label>
+                    <input type="text" id="studentName"
+                        placeholder="Enter your full name" required>
+                    <small>This field is required.</small>
+                </div>
+
+                <div class="input-group">
+                    <label for="studentEmail">Email Address</label>
+                    <input type="email" id="studentEmail"
+                        placeholder="Enter your email" required>
+                    <small>This field is required.</small>
+                </div>
+
+                <div class="input-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone"
+                        placeholder="Enter your phone number"
+                        pattern="[0-9]{10}"
+                        title="Enter a 10-digit phone number"
+                        required>
+                    <small>This field is required.</small>
+                </div>
+
+                <div class="input-group">
+                    <label for="regPassword">Create Password</label>
+                    <input type="password" id="regPassword"
+                        placeholder="Create a password"
+                        minlength="8" required>
+                    <small>This field is required.</small>
+                </div>
+
+                <div class="input-group">
+                    <label for="confirmPassword">Confirm Password</label>
+                    <input type="password" id="confirmPassword"
+                        placeholder="Confirm your password" required>
+                    <small>This field is required.</small>
+                </div>
+
+                <button type="submit" class="submit-btn">
+                    Create Account
+                </button>
+
+                <p class="switch-text">
+                    Already have an account?
+                    <a href="#" onclick="showLogin(); return false;">
+                        Sign In
+                    </a>
+                </p>
+
+            </form>
+
+            <p id="message" role="status"></p>
+
+        </div>
+
+    </div>
+
+    <script>
+        const loginForm = document.getElementById("loginForm");
+        const registerForm = document.getElementById("registerForm");
+        const message = document.getElementById("message");
+
+        function showLogin() {
+            loginForm.classList.remove("hidden");
+            registerForm.classList.add("hidden");
+
+            document.getElementById("loginTab").classList.add("active");
+            document.getElementById("registerTab").classList.remove("active");
+
+            message.textContent = "";
+        }
+
+        function showRegister() {
+            registerForm.classList.remove("hidden");
+            loginForm.classList.add("hidden");
+
+            document.getElementById("registerTab").classList.add("active");
+            document.getElementById("loginTab").classList.remove("active");
+
+            message.textContent = "";
+        }
+
+        // Check that all registration fields are valid.
+        registerForm.addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            const password = document.getElementById("regPassword").value;
+            const confirmPassword =
+                document.getElementById("confirmPassword").value;
+
+            if (password !== confirmPassword) {
+                message.textContent = "Passwords do not match!";
+                message.style.color = "red";
+                return;
+            }
+
+            message.textContent =
+                "Registration form validated successfully!";
+            message.style.color = "green";
+        });
+
+        // Demo login form validation.
+        loginForm.addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            message.textContent =
+                "Login form validated successfully!";
+            message.style.color = "green";
+        });
+    </script>
+
 </body>
 </html>

@@ -1,5 +1,185 @@
+/* General page design */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 body {
     font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #141e30, #243b55);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+/* Main container */
+
+.container {
+    width: 100%;
+    max-width: 430px;
+}
+
+.form-box {
+    background: white;
+    padding: 30px;
+    border-radius: 16px;
+    box-shadow: 0 10px 35px rgba(0, 0, 0, 0.3);
+}
+
+/* Heading */
+
+h1 {
     text-align: center;
-    margin-top: 100px;
+    color: #243b55;
+    margin-bottom: 10px;
+}
+
+.subtitle {
+    text-align: center;
+    color: #777;
+    font-size: 14px;
+    margin-bottom: 25px;
+}
+
+/* Login and Register tabs */
+
+.tabs {
+    display: flex;
+    margin-bottom: 25px;
+    background: #eeeeee;
+    padding: 5px;
+    border-radius: 8px;
+}
+
+.tab {
+    width: 50%;
+    padding: 12px;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 6px;
+}
+
+.tab.active {
+    background: #243b55;
+    color: white;
+}
+
+/* Input fields */
+
+.input-group {
+    margin-bottom: 18px;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    color: #333;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 7px;
+    font-size: 14px;
+    outline: none;
+    transition: 0.3s;
+}
+
+input:focus {
+    border-color: #243b55;
+    box-shadow: 0 0 5px rgba(36, 59, 85, 0.3);
+}
+
+/* Required field messages */
+
+small {
+    display: none;
+    color: #e53935;
+    font-size: 12px;
+    margin-top: 6px;
+}
+
+/* Show error when an empty required field is invalid */
+
+input:invalid:not(:focus):not(:placeholder-shown) {
+    border-color: #e53935;
+}
+
+/* Display message for empty fields after submission */
+
+form:has(button[type="submit"]:focus) input:invalid ~ small {
+    display: block;
+}
+
+/* Submit button */
+
+.submit-btn {
+    width: 100%;
+    padding: 13px;
+    background: #243b55;
+    color: white;
+    border: none;
+    border-radius: 7px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.submit-btn:hover {
+    background: #141e30;
+}
+
+/* Switch between forms */
+
+.switch-text {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 14px;
+    color: #666;
+}
+
+.switch-text a {
+    color: #243b55;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.switch-text a:hover {
+    text-decoration: underline;
+}
+
+/* Hide registration or login form */
+
+.hidden {
+    display: none;
+}
+
+/* Status message */
+
+#message {
+    text-align: center;
+    margin-top: 15px;
+    font-size: 14px;
+}
+
+/* Mobile responsive design */
+
+@media (max-width: 480px) {
+    .form-box {
+        padding: 22px;
+    }
+
+    h1 {
+        font-size: 25px;
+    }
 }
